@@ -1,4 +1,8 @@
-import tkinter as tk 
+import tkinter as tk
+from tkinter import ttk
+#from tkcalendar import DateEntry
+#pip install tkcalendar
+
 ventana=tk.Tk()
 ventana.title("Sistema de personal del Hospital General #09")
 ventana.geometry("1000x700")
@@ -14,22 +18,72 @@ def registro():
     vregistro.config(bg="#69A589")
     vregistro.geometry("1000x700")
 
-    # Contenedor principal para organizar con grid
+   #modificacion
     frame_principal = tk.Frame(vregistro, bg="#69A589")
     frame_principal.grid(row=0, column=0)
+    #vregistro.grid_columnconfigure(0, weight=1)
+    #vregistro.grid_rowconfigure(0, weight=1)
+
 
     r1 = tk.Label(frame_principal, text="Registro de personal", font=("Times New Roman", 26), bg="#69A589", fg="white")
-    r1.grid(row=0, column=0, columnspan=2, pady=40)  # Usamos grid
+    r1.grid(row=0, column=0, columnspan=2, pady=40)  
 
     r2 = tk.Label(frame_principal, text="RELLENE TODOS LOS CAMPOS DISPONIBLES", font=("Times New Roman", 11), bg="#69A589", fg="white")
-    r2.grid(row=1, column=0, columnspan=2)  # Usamos grid
+    r2.grid(row=1, column=0, columnspan=2) 
 
     nom_label = tk.Label(frame_principal, text="Ingrese su nombre:", font=("Times New Roman", 16), bg="#69A589", fg="white")
     nom_label.grid(row=2, column=0, padx=10, pady=10)
-
     nom_entry = tk.Entry(frame_principal, font=("Times New Roman", 16))
     nom_entry.grid(row=2, column=1, padx=10, pady=10)
 
+    pater_label = tk.Label(frame_principal, text="Ingrese su apellido paterno:", font=("Times New Roman", 16), bg="#69A589", fg="white")
+    pater_label.grid(row=3, column=0, padx=10, pady=10)
+    pater_entry = tk.Entry(frame_principal, font=("Times New Roman", 16))
+    pater_entry.grid(row=3, column=1, padx=10, pady=10)
+ 
+    mater_label = tk.Label(frame_principal, text="Ingrese su apellido materno:", font=("Times New Roman", 16), bg="#69A589", fg="white")
+    mater_label.grid(row=4, column=0, padx=10, pady=10)
+    mater_entry = tk.Entry(frame_principal, font=("Times New Roman", 16))
+    mater_entry.grid(row=4, column=1, padx=10, pady=10)
+
+    espacio = tk.Label(frame_principal, text="", bg="#69A589")
+    espacio.grid(row=5, column=0, columnspan=2, pady=20)
+
+    nss_label = tk.Label(frame_principal, text="Número de seguro social", font=("Times New Roman", 16), bg="#69A589", fg="white")
+    nss_label.grid(row=6, column=0, padx=10, pady=10)
+    nss_entry = tk.Entry(frame_principal, font=("Times New Roman", 16))
+    nss_entry.grid(row=6, column=1, padx=10, pady=10)
+
+    tel_label = tk.Label(frame_principal, text="Número de teléfono:", font=("Times New Roman", 16), bg="#69A589", fg="white")
+    tel_label.grid(row=7, column=0, padx=10, pady=10)
+    tel_entry = tk.Entry(frame_principal, font=("Times New Roman", 16))
+    tel_entry.grid(row=7, column=1, padx=10, pady=10)
+
+    domicilio_label = tk.Label(frame_principal, text="Domicilio particular:", font=("Times New Roman", 16), bg="#69A589", fg="white")
+    domicilio_label.grid(row=8, column=0, padx=10, pady=10)
+    domicilio_entry = tk.Entry(frame_principal, font=("Times New Roman", 16))
+    domicilio_entry.grid(row=8, column=1, padx=10, pady=10)
+
+
+
+    edad_label = tk.Label(frame_principal, text="Fecha de nacimiento:\n(Día/Mes/Año)", font=("Times New Roman", 16), bg="#69A589", fg="white")
+    edad_label.grid(row=2, column=3, padx=5, pady=5, columnspan=2)
+    edad = tk.Entry(frame_principal, font=("Times New Roman", 16))
+    edad.grid(row=2, column=5, padx=3, pady=5)
+
+    genero_var = tk.StringVar()                           #investigar
+    genero_label = tk.Label(frame_principal, text="Género:", font=("Times New Roman", 16), bg="#69A589", fg="white")
+    genero_label.grid(row=3, column=3, padx=5, pady=5)
+    genero = ttk.Combobox(frame_principal, textvariable=genero_var, font=("Times New Roman", 16))
+    genero['values'] = ("Masculino", "Femenino", "Otro")
+    genero.grid(row=3, column=4, padx=5, pady=5)
+
+    puesto_label = tk.Label(frame_principal, text="Puesto:", font=("Times New Roman", 16), bg="#69A589", fg="white")
+    puesto_label.grid(row=4, column=3, padx=5, pady=5)
+    puesto = ttk.Combobox(frame_principal, font=("Times New Roman", 16))
+    puesto['values'] = ("Médico", "Enfermero", "Administrativo")
+    puesto.grid(row=4, column=4, padx=5, pady=5)
+    
 
 
 def acceso():
@@ -45,7 +99,7 @@ def acceso():
 
 inicio=tk.Label(text="Bienvenido!\n    \n Hospital General #09", font=("Times New Roman",28), bg="#69A589", fg="#FFFFFF").pack(pady=40)
 
-btn_registro=tk.Button(text="Registro ", font=("Times New Roman",20), bg="#FFFFFF", fg="#000000", command=registro)
+btn_registro=tk.Button(text="Registro ", font=("Times New Roman",20), bg="#FFFFFF", fg="#000000",  command=registro)
 btn_registro.pack(pady=20)
 btn_acceso=tk.Button(text="Acceso ", font=("Times New Roman",20), bg="#FFFFFF", fg="#000000", command=acceso)
 btn_acceso.pack(pady=20)
